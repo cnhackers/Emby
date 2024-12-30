@@ -1,0 +1,17 @@
+docker run \
+    --name EmbyServer \
+    --net=host  \
+    -v /volume1/docker/Emby:/config \
+    -v /volume1/Movie:/Movie \
+    -v/volume1/Media:/Media \
+    -v /volume1/Download:/Download \
+    -v /volume1/Thunder:/Thunder \
+    -e TZ="Asia/Shanghai" \
+    --device /dev/dri:/dev/dri \
+    -e UID=0 \
+    -e GID=0 \
+    -e GIDLIST=0 \
+    -e HTTP_PROXY="http://root:root@10.172.16.101:7890/" \
+    -e HTTPS_PROXY="http://root:root@10.172.16.101:7890/" \
+    --restart always \
+    -d xinjiawei1/emby_unlockd:latest
